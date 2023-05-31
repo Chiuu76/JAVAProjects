@@ -1,0 +1,28 @@
+package ActionClasses;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class build1 {
+public static void main(String[] args) {
+		
+		WebDriver d=new ChromeDriver();
+		d.manage().window().maximize();
+		d.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		d.get("http://dhtmlgoodies.com/submitted-scripts/i-google-like-drag-drop/index.html");
+		WebElement source1 = d.findElement(By.xpath("//h1[text()='Block 1']"));
+		WebElement target = d.findElement(By.id("column-3"));
+		Actions a= new Actions(d);
+		//a.dragAndDrop(source1, target);
+		a.clickAndHold(source1).moveToElement(target).release();
+		a.perform();
+		//a.build();
+	
+}
+
+}
